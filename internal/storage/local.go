@@ -3,6 +3,7 @@ package storage
 import (
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 type LocalBackend struct {
@@ -15,12 +16,11 @@ func NewLocalBackend(basePath string) *LocalBackend {
 }
 
 func (l *LocalBackend) pathFor(id string) string {
-	// remove seperators from id then use it as a file name
-	clean := filepath.Clean("/" + id) // ensure it starts with a slash to prevent directory traversal attacks
-	if len(clean) > 0 && clean[0] == '/' {
-		clean = clean[1:]
+	id = strings.ReplaceAll(id, "/", "_") // replace slashes to avoid directory traversal
+	if id == "" {
+		id = "someblob"
 	}
-	return filepath.Join(l.BasePath, clean) // example output: /path/to/base/clean-id
+	return filepath.Join(l.BasePath, id) // example output: /path/to/base/id
 }
 
 func (l *LocalBackend) Save(id string, data []byte) error {
