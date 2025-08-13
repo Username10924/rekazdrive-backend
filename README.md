@@ -12,7 +12,7 @@ Blob storage API with JWT auth and multiple storage backends (local, S3, FTP, Po
 
 ```bash
 # Clone and start
-git clone <repo>
+git clone https://github.com/Username10924/rekazdrive-backend.git
 cd rekazdrive-backend
 
 # Run with Docker
