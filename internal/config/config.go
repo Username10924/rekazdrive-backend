@@ -42,7 +42,7 @@ func LoadFromEnv() Config {
 		S3Endpoint: os.Getenv("S3_ENDPOINT"),
 		S3Bucket: os.Getenv("S3_BUCKET"),
 		S3AccessKey: os.Getenv("S3_ACCESS_KEY"),
-		S3SecretKey: os.Getenv("S3_SECRET_KEY"),
+		S3SecretKey: os.Getenv("S3_SECRET"),
 		S3Region: os.Getenv("S3_REGION"),
 		FTPHost: os.Getenv("FTP_HOST"),
 		FTPUser: os.Getenv("FTP_USER"),

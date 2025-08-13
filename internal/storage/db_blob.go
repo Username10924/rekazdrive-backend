@@ -14,7 +14,7 @@ func NewDBBlobBackend(db *sql.DB) *DBBlobBackend {
 }
 
 func (d *DBBlobBackend) Save(id string, data []byte) error {
-	query := `INSERT OR REPLACE INTO blobs_data(id, data, created_at) VALUES ($1, $2, $3)`
+	query := `INSERT INTO blobs_data(id, data, created_at) VALUES ($1, $2, $3) ON CONFLICT (id) DO UPDATE SET data = EXCLUDED.data, created_at = EXCLUDED.created_at`
 	_, err := d.db.Exec(query, id, data, time.Now().UTC().Format(time.RFC3339))
 	return err
 }

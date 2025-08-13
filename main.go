@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"log"
 	"rekazdrive/internal/config"
-	"rekazdrive/internal/db" // Postgres driver
+	"rekazdrive/internal/db"
 	"rekazdrive/internal/handlers"
 	"rekazdrive/internal/middleware"
 	"rekazdrive/internal/storage"
