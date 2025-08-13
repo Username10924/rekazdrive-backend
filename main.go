@@ -1,16 +1,17 @@
-package server
+package main
 
 import (
 	"database/sql"
 	"log"
 	"rekazdrive/internal/config"
-	"rekazdrive/internal/db"
+	"rekazdrive/internal/db" // Postgres driver
 	"rekazdrive/internal/handlers"
 	"rekazdrive/internal/middleware"
 	"rekazdrive/internal/storage"
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+	_ "github.com/lib/pq" // PostgreSQL driver
 )
 
 func main() {
