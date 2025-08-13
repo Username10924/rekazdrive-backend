@@ -16,8 +16,11 @@ type FTPBackend struct {
 	basePath string
 }
 
-func NewFTPBackend(host, user, pass string) *FTPBackend {
-	return &FTPBackend{host: host, user: user, pass: pass, basePath: "/"}
+func NewFTPBackend(host, user, pass, basePath string) *FTPBackend {
+	if basePath == "" {
+		basePath = "/"
+	}
+	return &FTPBackend{host: host, user: user, pass: pass, basePath: basePath}
 }
 
 func (f *FTPBackend) dial() (*ftp.ServerConn, error) {
