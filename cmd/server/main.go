@@ -10,9 +10,16 @@ import (
 	"rekazdrive/internal/storage"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+
+	// load .env file
+	if err := godotenv.Load(); err != nil {
+		log.Println("No .env file found")
+	}
+
 	cfg := config.LoadFromEnv()
 
 	metaDB, err := db.NewPostgres(cfg.MetadataDSN)
